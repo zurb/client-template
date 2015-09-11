@@ -1,3 +1,8 @@
+var COMPATIBILITY = [
+  'last 2 versions',
+  'ie >= 9'
+];
+
 module.exports = function(grunt) {
   var hljs = require('highlight.js');
 
@@ -50,6 +55,17 @@ module.exports = function(grunt) {
       }
     },
 
+    postcss: {
+      options: {
+        processors: [
+          require('autoprefixer')({ browsers: COMPATIBILITY })
+        ]
+      },
+      dist: {
+        src: 'dist/assets/css/app.css'
+      }
+    },
+
     copy: {
       dist: {
         files: [
@@ -86,7 +102,7 @@ module.exports = function(grunt) {
 
       sass: {
         files: 'src/assets/scss/**/*.scss',
-        tasks: ['sass']
+        tasks: ['sass', 'postcss']
       },
 
       copy: {
@@ -122,7 +138,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-newer');
+  grunt.loadNpmTasks('grunt-postcss');
 
-  grunt.registerTask('build', ['clean','sass','uglify','assemble','copy']);
-  grunt.registerTask('default', ['build','watch']);
+  grunt.registerTask('build', ['clean', 'sass', 'postcss', 'uglify', 'assemble', 'copy']);
+  grunt.registerTask('default', ['build', 'watch']);
 }
