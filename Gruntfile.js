@@ -35,13 +35,13 @@ module.exports = function(grunt) {
 
     sass: {
       options: {
-        sourceMap: true,
         includePaths: [
           'bower_components/foundation/scss'
         ]
       },
       dist: {
         options: {
+          sourceMap: true,
           outputStyle: 'nested'
         },
         files: {
@@ -60,6 +60,11 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      options: {
+        compress: false,
+        mangle: false,
+        sourceMap: true
+      },
       dist: {
         files: {
           'dist/assets/js/all.js': [
