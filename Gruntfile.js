@@ -35,7 +35,9 @@ module.exports = function(grunt) {
 
     sass: {
       options: {
-        includePaths: ['bower_components/foundation/scss']
+        includePaths: [
+          'bower_components/foundation/scss'
+        ]
       },
       dist: {
         options: {
@@ -59,7 +61,11 @@ module.exports = function(grunt) {
     uglify: {
       dist: {
         files: {
-          'dist/assets/js/all.js': ['bower_components/jquery/dist/jquery.js', 'bower_components/foundation/js/foundation.js', 'src/assets/js/*']
+          'dist/assets/js/all.js': [
+            'bower_components/jquery/dist/jquery.js',
+            'bower_components/foundation/js/foundation.js',
+            'src/assets/js/*'
+          ]
         }
       }
     },
@@ -90,7 +96,7 @@ module.exports = function(grunt) {
       },
 
       assemble_all: {
-        files: ['src/{includes,layouts}/**/*.html'],
+        files: ['src/{partials,layouts}/**/*.html'],
         tasks: ['assemble'],
         options: {livereload:true}
       },
