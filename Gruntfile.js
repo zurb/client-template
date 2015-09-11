@@ -22,7 +22,7 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
-          partials: ['src/includes/*.html'],
+          partials: ['src/partials/**/*.html'],
           helpers: ['src/helpers/*.js'],
           layout: 'src/layouts/default.html'
         },
