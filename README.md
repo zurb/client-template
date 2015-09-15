@@ -1,22 +1,22 @@
 # ZURB Client Template
 
-This is the template for front-end coding projects done for ZURB clients. It's based on the "juiced" Foundation libsass template, and works exactly like that one.
+This is the template for front-end coding projects done for ZURB clients. It uses [Assemble](https://github.com/assemble/assemble) to generate flat HTML files, [node-sass](https://github.com/sass/node-sass) to compile Sass, and [UglifyJS](https://github.com/mishoo/UglifyJS) to concatenate and compress JavaScript. The task runner [Grunt](https://github.com/gruntjs/grunt) ties it all together.
 
 ## Requirements
 
-You'll need to have the following items installed before continuing.
+You'll need to have this software installed before continuing.
 
-  * [Node.js](http://nodejs.org): Use the installer provided on the NodeJS website.
-  * [Grunt](http://gruntjs.com/): Run `sudo npm install -g grunt-cli`
-  * [Bower](http://bower.io): Run `sudo npm install -g bower`
+  - [Node.js](http://nodejs.org): Use the installer provided on the NodeJS website.
+  - [Grunt](http://gruntjs.com/): Run `[sudo] npm install -g grunt-cli`
+  - [Bower](http://bower.io): Run `[sudo] npm install -g bower`
 
 ## First-time Setup
 
 If you're setting up a brand-new project, follow these steps:
 
-1. [Create a new GitHub repo](https://github.com/new`)
-2. Clone the repository: `git clone https://github.com/zurb/client-template client-name`
-3. Open the folder: `cd client-name`
+1. [Create a new GitHub repo](https://github.com/new`).
+2. Clone the repository: `git clone https://github.com/zurb/client-template [client-name]`
+3. Open the folder: `cd [client-name]`
 4. Run the setup script: `./setup.sh`
   - The script will ask you for the name of the repo you just created.
   - The script will also ask you if you need `sudo` to run `npm install`.
@@ -25,7 +25,7 @@ If you're setting up a brand-new project, follow these steps:
 
 If you're setting up an existing project follow these steps instead:
 
-1. Clone the repository: `git clone https://github.com/zurb/[repo-name]`
+1. Clone this repository: `git clone https://github.com/zurb/[repo-name]`
 2. Open the folder: `cd [repo-name]`
 3. Install dependencies: `npm install && bower install`
   - If `npm install` fails, try running it with `sudo` instead.
