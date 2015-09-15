@@ -4,16 +4,8 @@
 echo "What's the name of the GitHub repo?"
 read repo_name
 
-# Clone the template
-git clone https://github.com/zurb/client-template $repo_name
-cd $repo_name
-
-# Remove this script
-rm ./install.sh
-
 # Remove the existing Git history
 rm -rf ./.git
-git remote add origin
 
 # Set up a new Git history
 git init
@@ -40,4 +32,10 @@ done
 bower install
 
 # Done!
-echo "All done! Happy coding :)"
+echo ""
+echo "*******************************"
+echo "*                             *"
+echo "*  All done! Happy coding :)  *"
+echo "*                             *"
+echo "*******************************"
+echo ""

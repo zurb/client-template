@@ -10,34 +10,40 @@ You'll need to have the following items installed before continuing.
   * [Grunt](http://gruntjs.com/): Run `sudo npm install -g grunt-cli`
   * [Bower](http://bower.io): Run `sudo npm install -g bower`
 
-## Getting Started
+## First-time Setup
 
-**Download the repository here.** Don't clone the project directly unless you want to make changes to how it works.
+If you're setting up a brand-new project, follow these steps:
 
-Once you've downloaded the files, you'll probably want to rename the folder to the name of your client.
+1. [Create a new GitHub repo](https://github.com/new`)
+2. Clone the repository: `git clone https://github.com/zurb/client-template client-name`
+3. Open the folder: `cd client-name`
+4. Run the setup script: `./setup.sh`
+  - The script will ask you for the name of the repo you just created.
+  - The script will also ask you if you need `sudo` to run `npm install`.
 
-Next, navigate into the directory:
-```
-cd client
-```
+## Manual Setup
 
-Install all the dependincies (if `npm install` fails, you might need to run it as `sudo`):
-```
-npm install
-bower install
-```
+If you're setting up an existing project follow these steps instead:
 
-While you're working on your project, run:
-```
-grunt
-```
+1. Clone the repository: `git clone https://github.com/zurb/[repo-name]`
+2. Open the folder: `cd [repo-name]`
+3. Install dependencies: `npm install && bower install`
+  - If `npm install` fails, try running it with `sudo` instead.
 
-This will assemble all the pages and compile the Sass. You're all set to start working!
+## Usage
+
+With everything set up, run `grunt` to begin the build process. Grunt will re-run the build process when you save changes to files. You can also run `grunt build` to run the build process once.
+
+**Make sure you view the pages from a server!** Some things will break if you view pages from the `file:///` protocol. At ZURB we serve our static code from OS X's built-in Apache server.
 
 ## Directory Structure
 
-* `dist`: Static pages are assembled here. This is where you should view the site in your browser. **Don't edit these files directly. They will be overwritten!**
-* `src`: This is the directory you'll work in. 
-* `src/assets`: All assets (scss, images, fonts, js, etc) go here.
-* `src/assets/scss/_settings.scss`: Foundation configuration settings go in here.
-* `src/assets/scss/app.scss`: Application styles go here.
+- `dist`: Static pages are assembled here. This is where you should view the site in your browser. **Don't edit these files directly. They will be overwritten!**
+- `src`: This is the folder you'll work in.
+  - `src/assets`: All assets (scss, images, fonts, js, etc) go here.
+    - `src/assets/scss/_settings.scss`: Foundation configuration settings go in here.
+    - `src/assets/scss/app.scss`: Application styles go here.
+    - `src/assets/js/app.js`: Custom JavaScript goes here.
+  - `src/layouts`: HTML files for your common template.
+  - `src/pages`: HTML files for your individual pages.
+  - `src/partials`: HTML files for HTML partials
