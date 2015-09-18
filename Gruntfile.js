@@ -57,6 +57,10 @@ module.exports = function(grunt) {
 
     postcss: {
       options: {
+        map: {
+          prev: 'dist/assets/css/app.css.map',
+          inline: false
+        },
         processors: [
           require('autoprefixer')({ browsers: COMPATIBILITY })
         ]
