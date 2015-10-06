@@ -14,8 +14,9 @@ You'll need to have this software installed before continuing.
 
 If you're setting up a brand-new project, follow these steps:
 
-1. [Create a new GitHub repo](https://github.com/new`).
+1. [Create a new GitHub repo](https://github.com/new).
 2. Clone the repository: `git clone https://github.com/zurb/client-template [client-name]`
+  - **Replace [client-name] with the name of your client. This changes the name of the folder Git creates.**
 3. Open the folder: `cd [client-name]`
 4. Run the setup script: `./setup.sh`
   - The script will ask you for the name of the repo you just created.
