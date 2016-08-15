@@ -1,3 +1,8 @@
+var COMPATIBILITY = [
+  'last 2 versions',
+  'ie >= 9'
+];
+
 module.exports = function(grunt) {
   var hljs = require('highlight.js');
 
@@ -22,7 +27,7 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
-          partials: ['src/includes/*.html'],
+          partials: ['src/partials/**/*.html'],
           helpers: ['src/helpers/*.js'],
           layout: 'src/layouts/default.html'
         },
@@ -35,15 +40,33 @@ module.exports = function(grunt) {
 
     sass: {
       options: {
-        includePaths: ['bower_components/foundation/scss']
+        includePaths: [
+          'bower_components/foundation/scss'
+        ]
       },
       dist: {
         options: {
-          outputStyle: 'compressed'
+          sourceMap: true,
+          outputStyle: 'nested'
         },
         files: {
           'dist/assets/css/app.css': 'src/assets/scss/app.scss'
         }        
+      }
+    },
+
+    postcss: {
+      options: {
+        map: {
+          prev: 'dist/assets/css/app.css.map',
+          inline: false
+        },
+        processors: [
+          require('autoprefixer')({ browsers: COMPATIBILITY })
+        ]
+      },
+      dist: {
+        src: 'dist/assets/css/app.css'
       }
     },
 
@@ -57,9 +80,18 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      options: {
+        compress: false,
+        mangle: false,
+        sourceMap: true
+      },
       dist: {
         files: {
-          'dist/assets/js/all.js': ['bower_components/jquery/dist/jquery.js', 'bower_components/foundation/js/foundation.js', 'src/assets/js/*']
+          'dist/assets/js/all.js': [
+            'bower_components/jquery/dist/jquery.js',
+            'bower_components/foundation/js/foundation.js',
+            'src/assets/js/*'
+          ]
         }
       }
     },
@@ -74,7 +106,7 @@ module.exports = function(grunt) {
 
       sass: {
         files: 'src/assets/scss/**/*.scss',
-        tasks: ['sass']
+        tasks: ['sass', 'postcss']
       },
 
       copy: {
@@ -90,7 +122,7 @@ module.exports = function(grunt) {
       },
 
       assemble_all: {
-        files: ['src/{includes,layouts}/**/*.html'],
+        files: ['src/{partials,layouts}/**/*.html'],
         tasks: ['assemble'],
         options: {livereload:true}
       },
@@ -110,7 +142,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-newer');
+  grunt.loadNpmTasks('grunt-postcss');
 
-  grunt.registerTask('build', ['clean','sass','uglify','assemble','copy']);
-  grunt.registerTask('default', ['build','watch']);
+  grunt.registerTask('build', ['clean', 'sass', 'postcss', 'uglify', 'assemble', 'copy']);
+  grunt.registerTask('default', ['build', 'watch']);
 }
