@@ -1,0 +1,79 @@
+html, html a {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: all 0.1s ease-out;
+}
+
+ul {
+  position: relative;
+
+  .icon {
+    width: 40px;
+    padding: 5px;
+    
+    path {
+      transition: fill 0.2s ease-out;
+      fill: $body-font-color;
+    }
+
+    &:hover {
+      path {
+        fill: lighten($body-font-color, 30%);
+      }
+
+    }
+  }
+
+  &:first-child {
+    .icon {
+      padding-left: 0;
+    }
+  }
+
+  a {
+    border: none;
+  }
+}
+
+h1 {
+  font-size: 6rem;
+  margin-bottom: 0;
+  height: 110px;
+  left: -3px;
+  position: relative;
+  margin-bottom: 2rem;
+  display: block;
+  line-height: 1;
+}
+
+p {
+  margin-bottom: 0;
+  display: block;
+  position: relative;
+  font-size: 1.8rem;
+}
+
+.wrapper {
+  padding-top: 50px;
+}
+
+a {
+  border-bottom: 4px solid $body-font-color;
+  color: $body-font-color;
+
+  &:hover, &:focus {
+    color: lighten($body-font-color, 30%);
+    border-color: lighten($body-font-color, 30%);
+  }
+}
+
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+}
